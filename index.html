@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HCLF Bulk · 73→80kg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root[data-theme="light"]{--bg:#f6f0e5;--bg2:#fffaf1;--bg3:#efe4d1;--border:#e0d1bd;--ba:#c87645;--text:#2c2118;--text2:#75695d;--text3:#aa9a89;--accent:#b8663b;--accent2:#d99a57;--green:#52795a;--blue:#477482;--red:#ad5b4f;--brown:#9a6842;--note:#fbf1e3;--tag:rgba(184,102,59,.1);--open:#fff5e7;--shadow:0 12px 34px rgba(78,52,32,.08);--page-gradient:radial-gradient(circle at 12% 4%,rgba(216,154,96,.28),transparent 28%),radial-gradient(circle at 88% 12%,rgba(255,218,154,.32),transparent 30%),radial-gradient(circle at 50% 92%,rgba(116,148,124,.14),transparent 38%),linear-gradient(160deg,#fbf4e8 0%,#f4ead9 42%,#efe0cb 100%);}
+:root[data-theme="dark"]{--bg:#15120e;--bg2:#1f1a14;--bg3:#2b241b;--border:#3a3025;--ba:#d89b60;--text:#f0e6d8;--text2:#b3a695;--text3:#706458;--accent:#d49a5c;--accent2:#efc37e;--green:#88b071;--blue:#7faeb7;--red:#d07a6e;--brown:#c18a59;--note:#241d16;--tag:rgba(212,154,92,.13);--open:#251f18;--shadow:0 16px 38px rgba(0,0,0,.24);--page-gradient:radial-gradient(circle at 15% 0%,rgba(216,154,96,.16),transparent 30%),radial-gradient(circle at 86% 16%,rgba(127,86,44,.18),transparent 34%),linear-gradient(180deg,var(--bg),var(--bg));}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--page-gradient);background-attachment:fixed;color:var(--text);font-family:'Work Sans',sans-serif;min-height:100vh;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+.wrap{max-width:480px;margin:0 auto;padding:0 18px 84px;}
+
+/* header */
+.header{padding:34px 0 22px;display:flex;justify-content:space-between;align-items:flex-start;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.title{font-family:'Fraunces',serif;font-size:36px;font-weight:700;letter-spacing:-.8px;line-height:.95;}
+.subtitle{color:var(--text2);font-size:12px;font-weight:400;margin-top:8px;}
+.theme-btn{background:var(--bg2);border:1px solid var(--border);border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;margin-top:1px;box-shadow:var(--shadow);}
+.theme-btn:hover{border-color:var(--accent);transform:translateY(-1px);}
+
+/* nav */
+.nav{display:flex;background:rgba(255,250,241,.72);border:1px solid var(--border);border-radius:18px;padding:4px;margin-bottom:20px;gap:4px;box-shadow:var(--shadow);backdrop-filter:blur(12px);}
+:root[data-theme="dark"] .nav{background:rgba(31,26,20,.78);}
+.nav-btn{flex:1;padding:10px 5px;border-radius:14px;border:none;cursor:pointer;font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;background:transparent;color:var(--text2);transition:all .2s;white-space:nowrap;}
+.nav-btn.active{background:var(--text);color:var(--bg2);}
+
+/* view */
+.view{display:none;}.view.active{display:block;}
+
+/* day toggle */
+.day-toggle{display:flex;gap:10px;margin-bottom:16px;}
+.day-btn{flex:1;padding:10px;border-radius:14px;border:1px solid var(--border);cursor:pointer;font-family:'Work Sans',sans-serif;font-weight:600;font-size:12px;background:rgba(255,250,241,.45);color:var(--text2);transition:all .2s;}
+:root[data-theme="dark"] .day-btn{background:rgba(31,26,20,.45);}
+.day-btn.active{border-color:var(--accent);color:var(--accent);background:var(--tag);}
+
+/* card */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;margin-bottom:9px;overflow:hidden;cursor:pointer;transition:all .2s;box-shadow:0 1px 0 rgba(255,255,255,.35) inset;}
+.card:hover{border-color:rgba(184,102,59,.38);transform:translateY(-1px);}
+.card.open{border-color:var(--ba);background:var(--open);box-shadow:var(--shadow);}
+.card-header{display:flex;justify-content:space-between;align-items:center;padding:14px 15px;}
+.card-left{display:flex;align-items:center;gap:10px;min-width:0;}
+.card-emoji{font-size:15px;filter:saturate(.85);}
+.card-name{font-weight:600;font-size:13px;letter-spacing:-.1px;}
+.card-right{display:flex;align-items:center;gap:9px;}
+.card-kcal{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--accent);}
+.chev{color:var(--text3);font-size:9px;transition:transform .2s;}
+.card.open .chev{transform:rotate(180deg);}
+.card-body{display:none;padding:0 15px 14px;}
+.card.open .card-body{display:block;}
+
+/* items */
+.item-list{list-style:none;margin-bottom:12px;}
+.item-list li{display:flex;align-items:flex-start;gap:8px;padding:4px 0;font-size:12.5px;color:var(--text2);line-height:1.5;}
+.item-list li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:8px;opacity:.75;}
+
+/* badges */
+.macros{display:flex;gap:6px;flex-wrap:wrap;}
+.badge{padding:4px 8px;border-radius:999px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;border:1px solid transparent;}
+.bc{background:rgba(71,116,130,.12);color:var(--blue);border-color:rgba(71,116,130,.18);}.bp{background:rgba(82,121,90,.12);color:var(--green);border-color:rgba(82,121,90,.18);}.bf{background:rgba(154,104,66,.12);color:var(--brown);border-color:rgba(154,104,66,.18);}
+
+.note{margin-top:10px;padding:9px 11px;background:var(--note);border:1px solid rgba(184,102,59,.12);border-left:3px solid var(--accent);border-radius:10px;font-size:11.5px;color:var(--text2);font-style:normal;line-height:1.6;}
+
+/* total */
+.total{background:linear-gradient(180deg,var(--bg2),var(--open));border:1px solid var(--ba);border-radius:20px;padding:17px 17px;margin-top:13px;box-shadow:var(--shadow);}
+.total-lbl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent);margin-bottom:9px;}
+.total-num{font-family:'Fraunces',serif;font-size:34px;font-weight:700;letter-spacing:-1px;line-height:1;margin-bottom:12px;}
+.total-num span{font-size:13px;color:var(--text2);font-family:'Work Sans',sans-serif;font-weight:400;}
+.prog{height:5px;background:var(--bg3);border-radius:999px;margin-bottom:12px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:999px;transition:width .4s;}
+
+/* workouts */
+.day-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.dt{background:var(--green);box-shadow:0 0 8px rgba(82,121,90,.55),0 0 18px rgba(82,121,90,.22);}
+.dm{background:var(--blue);box-shadow:0 0 8px rgba(71,116,130,.55),0 0 18px rgba(71,116,130,.22);}
+.dr{background:var(--text3);box-shadow:0 0 7px rgba(170,154,137,.32);}
+.drf{background:var(--accent);box-shadow:0 0 8px rgba(184,102,59,.55),0 0 18px rgba(184,102,59,.24);}
+.day-name{font-family:'Fraunces',serif;font-size:16px;font-weight:700;letter-spacing:-.2px;}
+.tbadge{font-family:'DM Mono',monospace;font-size:9px;padding:3px 7px;border-radius:20px;}
+.tbt{background:rgba(82,121,90,.12);color:var(--green);}
+.tbm{background:rgba(71,116,130,.12);color:var(--blue);}
+.tbr{background:rgba(112,100,88,.12);color:var(--text3);}
+.tbrf{background:var(--tag);color:var(--accent);}
+.split-lbl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.ex-list{list-style:none;}
+.ex-list li{padding:7px 0;border-bottom:1px solid var(--border);}
+.ex-list li:last-child{border-bottom:none;}
+.ex-row{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.ex-name{color:var(--text);font-weight:600;font-size:12.5px;}
+.ex-sets{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);background:var(--bg3);padding:2px 7px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.ex-tip{font-size:11px;color:var(--text3);font-style:normal;margin-top:4px;line-height:1.45;}
+.rest-txt{font-size:12.5px;color:var(--text2);line-height:1.7;}
+.rest-txt strong{color:var(--text);}
+.nut-tag{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-family:'DM Mono',monospace;font-size:9px;padding:3px 8px;border-radius:20px;border:1px solid var(--border);color:var(--text3);}
+.failure-note{margin-top:10px;padding:9px 11px;background:rgba(82,121,90,.1);border-left:3px solid var(--green);border-radius:10px;font-size:11.5px;color:var(--green);line-height:1.6;}
+.pectus{margin-top:10px;padding:9px 11px;background:rgba(173,91,79,.1);border-left:3px solid var(--red);border-radius:10px;font-size:11.5px;color:var(--red);line-height:1.6;}
+.pectus strong{color:var(--red);}
+
+/* ── PRINCIPES ── */
+.principes-menu{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+.pmenu-btn{padding:7px 12px;border-radius:20px;border:1px solid var(--border);background:rgba(255,250,241,.45);color:var(--text2);font-family:'Work Sans',sans-serif;font-size:11.5px;font-weight:600;cursor:pointer;transition:all .2s;}
+:root[data-theme="dark"] .pmenu-btn{background:rgba(31,26,20,.45);}
+.pmenu-btn.active{border-color:var(--accent);color:var(--accent);background:var(--tag);}
+.principe-section{display:none;}.principe-section.active{display:block;}
+
+.p-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:15px;margin-bottom:9px;box-shadow:0 1px 0 rgba(255,255,255,.28) inset;}
+.p-card-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);margin-bottom:9px;}
+.p-card p{font-size:12.5px;color:var(--text2);line-height:1.75;margin-bottom:7px;}
+.p-card p:last-child{margin-bottom:0;}
+.p-card strong{color:var(--text);}
+.p-rule{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--text2);line-height:1.55;}
+.p-rule:last-child{border-bottom:none;}
+.p-rule-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;}
+.p-rule strong{color:var(--text);}
+
+.fde-block{background:var(--bg2);border:1px solid var(--border);border-radius:16px;margin-bottom:8px;overflow:hidden;}
+.fde-header{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;cursor:pointer;}
+.fde-time{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);font-weight:500;}
+.fde-name{font-size:12.5px;font-weight:600;color:var(--text);}
+.fde-body{display:none;padding:0 15px 13px;font-size:12.5px;color:var(--text2);line-height:1.75;}
+.fde-block.open{border-color:var(--ba);}
+.fde-block.open .fde-body{display:block;}
+.fde-block.open .chev{transform:rotate(180deg);}
+
+.suivi-step{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:14px 15px;margin-bottom:8px;}
+.suivi-num{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:5px;}
+.suivi-title{font-weight:700;font-size:13.5px;margin-bottom:7px;}
+.suivi-body{font-size:12px;color:var(--text2);line-height:1.75;}
+.suivi-body strong{color:var(--text);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.card,.fde-block,.p-card,.suivi-step{animation:fadeUp .3s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div>
+      <div class="eyebrow">Plan · 73kg → 80kg</div>
+      <div class="title">HCLF BULK</div>
+      <div class="subtitle">Push/Pull · 1 série failure · HCLF bulk</div>
+    </div>
+    <button class="theme-btn" onclick="toggleTheme()">🌙</button>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn active" onclick="switchView('meals',this)">🍽 Repas</button>
+    <button class="nav-btn" onclick="switchView('workouts',this)">🏋️ Training</button>
+    <button class="nav-btn" onclick="switchView('principes',this)">📖 Principes</button>
+  </div>
+
+  <!-- ═══ MEALS ═══ -->
+  <div id="view-meals" class="view active">
+    <div class="day-toggle">
+      <button class="day-btn active" id="btn-training" onclick="switchDay('training')">🏋️ Entraînement</button>
+      <button class="day-btn" id="btn-rest" onclick="switchDay('rest')">😴 Repos</button>
+    </div>
+    <div id="meals-list"></div>
+    <div id="total-block"></div>
+  </div>
+
+  <!-- ═══ WORKOUTS ═══ -->
+  <div id="view-workouts" class="view">
+    <div id="workouts-list"></div>
+  </div>
+
+  <!-- ═══ PRINCIPES ═══ -->
+  <div id="view-principes" class="view">
+    <div class="principes-menu" id="pmenu"></div>
+    <div id="principes-content"></div>
+  </div>
+
+</div>
+
+<script>
+// ─── MEALS DATA ──────────────────────────────────────────────────────────────
+const meals={
+  training:[
+    {emoji:"☕",title:"Matin (réveil)",
+     items:["350ml lait écrémé + café + 25g sucre ou miel","1 verre de jus d'orange (250ml) + pincée de sel","Option parfois : morceau de baguette + marmelade/confiture de fraise ou 1 banane"],
+     m:{c:75,p:12,f:2,k:366},
+     note:"Démarre l'intake tôt sans créer de satiété. OJ gardé au matin + intra pour contrôler le budget."},
+    {emoji:"🍚",title:"Repas 1 (~10h)",
+     items:["111g riz blanc cru ou 550–650g pommes de terre","70–90g protéine maigre (thon, blanc d'œuf, poisson blanc, steak haché 5% MG parfois)","Sel"],
+     m:{c:92,p:18,f:3,k:467},
+     note:"Simple et répétable. Si le repas semble lourd, réduire la protéine avant les glucides."},
+    {emoji:"🍫",title:"Bloc entre les repas (~12h)",
+     items:["650ml lait chocolaté écrémé","100g dattes ou raisins secs","5–10g gingembre confit si la nourriture stagne"],
+     m:{c:145,p:20,f:4,k:696},
+     note:"C'est ici que l'essentiel de l'intake se construit. Boire rapidement, pas à petites gorgées."},
+    {emoji:"🍚",title:"Repas 2 (~14h)",
+     items:["111g riz blanc cru, pâtes blanches ou 550–650g pommes de terre","70–90g protéine maigre","150ml jus de pomme + sel"],
+     m:{c:112,p:18,f:3,k:547},
+     note:"Le petit jus de pomme cale des glucides liquides sans ajouter d'OJ."},
+    {emoji:"⚡",title:"Pré-Workout (~60 min avant)",
+     items:["250ml jus de pomme ou petit cola","30g rice cakes ou céréales low-fat","Pas de gras"],
+     m:{c:55,p:3,f:1,k:241},
+     note:"Léger. Pas de gras, pas de gros repas avant l'entraînement."},
+    {emoji:"🏋️",title:"Intra-Workout",
+     items:["1L jus d'orange","Pincée de sel"],
+     m:{c:90,p:0,f:0,k:360},
+     note:"Ton OJ principal de la journée. Maintient la glycémie et l'output pendant la séance."},
+    {emoji:"💪",title:"Post-Workout",
+     items:["500ml lait chocolaté écrémé","Ou 400–500ml lait écrémé + sucre/miel","Pas de gras ajouté — ne pas ralentir le prochain repas"],
+     m:{c:60,p:16,f:3,k:331},
+     note:"Post-workout liquide, zéro OJ en plus. Le prochain repas ne doit pas être retardé."},
+    {emoji:"🍽️",title:"Dîner",
+     items:["100g riz, pain au levain, pâtes blanches ou pommes de terre","80–100g protéine maigre (poisson blanc, thon, blanc d'œuf, steak haché 5% MG parfois)","Salade daily : 1–2 carottes râpées en strips + 1 c. à café huile de coco + 1/2 c. à café vinaigre blanc + sel de Guérande"],
+     m:{c:95,p:20,f:10,k:550},
+     note:null},
+    {emoji:"🌙",title:"Fin de soirée",
+     items:["Sorbet (180–220g) si dispo","Sinon yaourt grec 0% ou skyr + beaucoup de miel","300ml lait écrémé ou cola"],
+     m:{c:90,p:10,f:4,k:436},
+     note:"Sorbet = glucides denses. Si pas de sorbet : skyr/yaourt grec 0% + miel pour garder le snack low-fat et digeste. Pas d'OJ ici."}
+  ],
+  rest:[
+    {emoji:"☕",title:"Matin (réveil)",
+     items:["350ml lait écrémé + café + 25g sucre ou miel","500ml jus d'orange maximum + pincée de sel","Option parfois : morceau de baguette + marmelade/confiture de fraise ou 1 banane"],
+     m:{c:90,p:12,f:2,k:426},
+     note:"Tout l'OJ du jour est ici. Ne pas dépasser 500ml les jours de repos."},
+    {emoji:"🍚",title:"Repas 1 (~10h)",
+     items:["111g riz blanc cru ou 550–650g pommes de terre","70–90g protéine maigre (thon, blanc d'œuf, poisson blanc, steak haché 5% MG parfois)","Sel"],
+     m:{c:92,p:18,f:3,k:467},
+     note:null},
+    {emoji:"🍫",title:"Bloc entre les repas (~12h)",
+     items:["650ml lait chocolaté écrémé","100g dattes ou raisins secs","5–10g gingembre confit si la nourriture stagne"],
+     m:{c:145,p:20,f:4,k:696},
+     note:"Compense l'absence d'intra-workout sans augmenter les gros repas solides."},
+    {emoji:"🍚",title:"Repas 2 (~14h)",
+     items:["111g riz blanc cru, pâtes blanches ou 550–650g pommes de terre","70–90g protéine maigre","250ml jus de pomme + sel"],
+     m:{c:112,p:18,f:3,k:547},
+     note:"Jus de pomme à la place de l'OJ pour garder les glucides hauts sans exploser le budget."},
+    {emoji:"🍏",title:"Bloc léger (~17h)",
+     items:["300ml jus de pomme ou cola","30–40g rice cakes ou céréales low-fat","Pas de gras"],
+     m:{c:70,p:3,f:1,k:301},
+     note:"Remplace une partie des glucides intra manquants des jours off."},
+    {emoji:"🍽️",title:"Dîner",
+     items:["100g riz, pain au levain, pâtes blanches ou pommes de terre","80–100g protéine maigre (poisson blanc, thon, blanc d'œuf, steak haché 5% MG parfois)","Salade daily : 1–2 carottes râpées en strips + 1 c. à café huile de coco + 1/2 c. à café vinaigre blanc + sel de Guérande"],
+     m:{c:95,p:20,f:10,k:550},
+     note:null},
+    {emoji:"🌙",title:"Fin de soirée",
+     items:["Sorbet (180–220g) si dispo","Sinon yaourt grec 0% ou skyr + beaucoup de miel","300ml lait écrémé ou cola"],
+     m:{c:90,p:10,f:5,k:445},
+     note:"Glucides avant sommeil, zéro OJ supplémentaire. Skyr/yaourt grec 0% + miel si pas de sorbet. Total OJ repos = 500ml max."}
+  ]
+};
+
+// ─── WORKOUTS DATA ────────────────────────────────────────────────────────────
+const workouts=[
+  {day:"Lundi",type:"t",label:"Upper Push",split:"UPPER PUSH",pectus:true,
+   pectusNote:"Déprioritiser les delts. Travailler le pec surtout en position contractée (pec deck). Éviter l'étirement profond pour l'instant. Après quelques semaines, ajouter un seul exercice en stretch si le pec reste dominant.",
+   failureNote:"1 série principale à la failure par exercice. Après la dernière rep complète : partials dans la portion forte + rest-pause si besoin. La qualité d'exécution prime sur la quantité.",
+   exos:[
+    {name:"Decline Chest Press",sets:"1×F · 6→10",tip:"Réduit la dominance des épaules — plus d'implication pectorale"},
+    {name:"Pec Deck",sets:"1×F · 10",tip:"Priorité absolue avec pectus — position contractée"},
+    {name:"Incline Dumbbell Front Raise",sets:"1×F · 10",tip:null},
+    {name:"Machine Lateral Raise",sets:"1×F · 10",tip:"Tension constante sur tout le mouvement"},
+    {name:"Machine Preacher Curl",sets:"1×F · 6→10",tip:null},
+    {name:"Cable Reverse Curl",sets:"1×F · 10",tip:null}
+   ],nut:"High carb · ~3 800 kcal"},
+  {day:"Mardi",type:"m",label:"Repos actif",
+   rest:"<strong>Marche 30–60 min.</strong> Récupération SNC, tendons, articulations. Ce jour rend le Mercredi productif.",
+   nut:"Moderate · ~3 200 kcal"},
+  {day:"Mercredi",type:"t",label:"Lower Push",split:"LOWER PUSH",
+   failureNote:"1 série à la failure. Extensions d'abord (position contractée), leg press ensuite (position étirée) — ordre intentionnel.",
+   exos:[
+    {name:"Machine Leg Extension",sets:"1×F · 10",tip:"Position contractée — quadriceps"},
+    {name:"Single-Leg Leg Press",sets:"1×F · 6→10",tip:"Position étirée — complémentaire aux extensions"},
+    {name:"Machine Adductor",sets:"1×F · 10",tip:null}
+   ],nut:"High carb · ~3 800 kcal"},
+  {day:"Jeudi",type:"r",label:"Repos",
+   rest:"<strong>Repos complet.</strong> Journée basse en glucides — fenêtre d'oxydation lipidique.",
+   nut:"Lower · ~2 800 kcal"},
+  {day:"Vendredi",type:"t",label:"Upper Pull",split:"UPPER PULL",
+   failureNote:"1 série à la failure. Si activation dorsale faible, commencer par un pullover avant les tirages composés.",
+   exos:[
+    {name:"Chest-Supported T-Bar Row",sets:"1×F · 6→10",tip:"Si dorsale faible : pullover en premier"},
+    {name:"Reverse-Grip Lat Pulldown",sets:"1×F · 6→10",tip:null},
+    {name:"Rear delt machine",sets:"1×F · 10",tip:null},
+    {name:"Cable Pushdown",sets:"1×F · 10",tip:null},
+    {name:"Overhead Cable Triceps Extension",sets:"1×F · 10",tip:null}
+   ],nut:"High carb · ~3 800 kcal"},
+  {day:"Samedi",type:"rf",label:"Refeed (si besoin)",
+   rest:"<strong>Repos actif ou marche.</strong> Si tu te sens flat après la semaine : refeed 3 200–3 500 kcal, lipides ≤30g.",
+   nut:"Refeed · 3 200–3 500 kcal"},
+  {day:"Dimanche",type:"t",label:"Lower Pull",split:"LOWER PULL",
+   failureNote:"1 série à la failure. Si activation fessiers limitée, commencer par hip thrust.",
+   exos:[
+    {name:"Machine RDL",sets:"1×F · 6→10",tip:"Si fessiers peu actifs : hip thrust en premier"},
+    {name:"Seated Leg Curl",sets:"1×F · 10",tip:null},
+    {name:"Machine Abductor",sets:"1×F · 10",tip:null}
+   ],nut:"High carb · ~3 800 kcal"}
+];
+
+// ─── PRINCIPES DATA ───────────────────────────────────────────────────────────
+const principes=[
+  {
+    id:"essentiels",label:"⚡ Essentiels",
+    content:`
+    <div class="p-card" style="animation-delay:.04s">
+      <div class="p-card-title">Hiérarchie — dans l'ordre</div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Tier 1</strong> — Intake, dépense, sommeil, stimulus d'entraînement. Si ça bug ici, rien d'autre ne sert.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Tier 2</strong> — Vitesse de digestion, tolérance aux repas.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Tier 3</strong> — Absorption et disponibilité des nutriments.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Tier 4 & 5</strong> — Corrections ciblées, pharmacologie. Inutile si le reste est instable.</span></div>
+    </div>
+    <div class="p-card" style="animation-delay:.08s">
+      <div class="p-card-title">Règle fondamentale</div>
+      <p>Le poids augmente quand <strong>l'intake dépasse la dépense</strong> de façon soutenue. Un seul jour à hautes calories ne change rien — c'est la <strong>moyenne hebdomadaire</strong> qui compte.</p>
+      <p>Le gros problème des hard gainers : intake qui baisse les jours de repos, repas intra non compensés, dépense non remarquée (marche, stress, mouvement inconscient).</p>
+    </div>
+    <div class="p-card" style="animation-delay:.12s">
+      <div class="p-card-title">Protéines — ne pas en abuser</div>
+      <p>La fourchette pratique est <strong>1.2 à 1.6g/kg/jour</strong>. À 73kg = <strong>88–117g/jour</strong> suffisent.</p>
+      <p>Plus de protéines = plus de satiété, repas plus lents, moins de glucides. Dans un contexte HCLF pour hard gainer, c'est contre-productif.</p>
+    </div>`
+  },
+  {
+    id:"repas",label:"🍽️ Repas",
+    content:`
+    <div class="p-card" style="animation-delay:.04s">
+      <div class="p-card-title">Structure HCLF</div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Les <strong>glucides forment la base</strong> de chaque repas — 650 à 850g/jour.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Les <strong>graisses restent basses</strong> pour accélérer la vidange gastrique → plus de repas dans la journée.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Les <strong>calories liquides</strong> (jus, lait chocolaté, cola) passent plus vite et créent moins de satiété mécanique.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Fibres à contrôler</strong> — elles ajoutent du volume sans calories utiles et ralentissent le prochain repas.</span></div>
+    </div>
+    <div class="p-card" style="animation-delay:.08s">
+      <div class="p-card-title">Ce qui booste l'intake sans effort</div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Lait chocolaté écrémé</strong> entre les repas — 500–700ml + dattes/raisins secs. Ajoute +150g glucides facilement.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Sorbet</strong> le soir si dispo. Sinon <strong>skyr ou yaourt grec 0%</strong> + beaucoup de miel pour rester low-fat et digeste.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Cola, jus de pomme, jus d'orange</strong> — tous valides. Ici l'OJ est priorisé le matin + intra, et le jus de pomme sert à compléter les glucides sans exploser le budget.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Gingembre confit 5–10g</strong> dans la journée si la nourriture "stagne" trop longtemps.</span></div>
+    </div>
+    <div class="p-card" style="animation-delay:.12s">
+      <div class="p-card-title">Ce qui réduit l'intake sans qu'on s'en rende compte</div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Boissons gazeuses autour des repas</strong> — pression gastrique, satiété anticipée.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Grande quantité de liquide pendant les repas</strong> — accélère la satiété. Boire entre les repas à la place.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Caféine en excès</strong> — supprime l'appétit, décale les repas.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Repas secs, fibreux, froid</strong> — plus dur à finir, plus de fatigue masticatoire.</span></div>
+    </div>`
+  },
+  {
+    id:"sauces",label:"🥣 Recettes",
+    content:`
+    <div class="p-card" style="animation-delay:.04s">
+      <div class="p-card-title">Objectif — riz/patates moins fades</div>
+      <p>Garder les repas simples, digestes et low-fat, mais éviter le côté repas sec de gym bro. Les bases : lait écrémé, fécule, tomate, oignon, ail, curcuma, gingembre, herbes et sel.</p>
+      <p>Pour les pommes de terre : bouillies = version la plus neutre. Air fryer en frites possible avec <strong>1/2 c. à soupe d'huile de coco</strong> ; compte juste un petit supplément de gras ce jour-là.</p>
+    </div>
+    <div class="p-card" style="animation-delay:.08s">
+      <div class="p-card-title">Sauces cool low-fat</div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Champignons bouillis + lait écrémé</strong> — champignons tranchés dans le cuiseur de riz avec beaucoup d'eau, cycle complet voire deux cycles. Égoutter, puis réduire en casserole avec 100–150ml lait écrémé, ail, sel et 1 c. de fécule de maïs pour lier. Texture crémeuse, zéro gras.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Carry tomate</strong> — tomates concassées, oignon, ail, curcuma, gingembre, sel. Mijoter 15–20 min. Base carry réunionnais sans viande grasse : à verser sur riz + protéine.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Cari blanc</strong> — oignon, ail, curcuma, lait écrémé, fécule, sel. Pas de tomate, couleur crème/jaune, plus doux. Très bien avec poisson maigre sur riz.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Béchamel allégée ail-herbes</strong> — lait écrémé, fécule, ail rôti écrasé, sel, persil ou ciboulette. Texture proche d'une béchamel traditionnelle mais sans beurre.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Oignon caramélisé + lait écrémé</strong> — oignons cuits très longtemps à sec jusqu'à caramélisation naturelle, puis lait écrémé, fécule et sel. Sucré naturellement, profond en goût, zéro sucre ajouté.</span></div>
+    </div>
+    <div class="p-card" style="animation-delay:.12s">
+      <div class="p-card-title">Combos simples</div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Riz + thon</strong> : carry tomate bien réduit.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Patates + poisson blanc</strong> : cari blanc ou béchamel ail-herbes.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Riz + steak 5%</strong> : oignon caramélisé + lait écrémé.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Frites air fryer</strong> : sauce champignons crémeuse ou carry tomate.</span></div>
+    </div>
+    <div class="fde-block" style="animation-delay:.16s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Recette maison</div><div class="fde-name">Gingembre confit</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">
+        <strong>Ingrédients</strong><br>
+        Gingembre frais + sucre blanc + eau + pincée de sel.<br><br>
+        <strong>Étapes</strong><br>
+        1. Éplucher le gingembre et le couper en petits morceaux ou tranches fines. Plus c'est fin, plus vite ça cuit et moins c'est fort.<br>
+        2. Faire bouillir dans beaucoup d'eau pendant 30–40 min pour enlever l'amertume et adoucir le piquant. Égoutter, jeter l'eau.<br>
+        3. Préparer un sirop : même poids de sucre que de gingembre + un peu d'eau, genre 100ml pour 200g de sucre. Chauffer jusqu'à dissolution.<br>
+        4. Mettre le gingembre dans le sirop, cuire à feu doux 45–60 min en remuant régulièrement jusqu'à ce que le sirop soit absorbé et le gingembre translucide.<br>
+        5. Étaler sur du papier sulfurisé, laisser sécher 12–24h à température ambiante. Rouler dans du sucre pour la version classique, ou laisser tel quel pour la version plus humide.<br><br>
+        <strong>Tips</strong><br>
+        Le premier bouillonnement est clé : plus tu le fais longtemps, moins le gingembre sera agressif. Pour une version très douce digestion, fais deux bains d'eau bouillante.<br><br>
+        Se conserve 2–3 semaines dans un bocal hermétique. Tu peux aussi garder le sirop restant : excellent dans le lait écrémé ou l'OJ.
+      </div>
+    </div>
+    <div class="fde-block" style="animation-delay:.20s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Recette express</div><div class="fde-name">Sorbet fruits express</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">
+        <strong>Base</strong><br>
+        Fruits congelés + 60ml d'eau + miel + pincée de sel + citron.<br><br>
+        <strong>Étapes</strong><br>
+        1. Mettre les fruits congelés dans le bol.<br>
+        2. Ajouter les 60ml d'eau, le miel, le sel et le citron.<br>
+        3. Turbo 2–3 fois par courtes impulsions pour concasser grossièrement d'abord.<br>
+        4. Ensuite vitesse 10 pendant 20–30 sec pour obtenir une texture lisse et crémeuse.<br>
+        5. Racler les parois avec la spatule entre chaque passage si besoin, puis relancer.<br><br>
+        <strong>Tips</strong><br>
+        Ne pas trop insister sinon ça réchauffe et ça devient liquide : travailler vite.<br>
+        Si c'est trop épais et que la machine force, ajouter un tout petit peu d'eau supplémentaire.<br>
+        Servir immédiatement, ça ne tient pas longtemps à température ambiante.
+      </div>
+    </div>`
+  },
+  {
+    id:"training",label:"🏋️ Training",
+    content:`
+    <div class="p-card" style="animation-delay:.04s">
+      <div class="p-card-title">Principe central</div>
+      <p>Un muscle n'a pas besoin de dizaines de séries pour recevoir un signal de croissance. Ce qu'il faut : <strong>une série exécutée avec suffisamment de tension et d'effort</strong> pour recruter la majorité des unités motrices disponibles.</p>
+      <p>Plusieurs séries à faible effort produisent souvent <strong>moins de stimulus</strong> qu'un petit nombre de séries à haute intensité.</p>
+    </div>
+    <div class="p-card" style="animation-delay:.08s">
+      <div class="p-card-title">Définition de la failure</div>
+      <p>La failure = <strong>la dernière rep complète</strong> avec la même amplitude et le même contrôle que les précédentes. Dès que l'amplitude raccourcit, le chemin change, ou le momentum prend le relais : c'est terminé.</p>
+      <p>Après : <strong>partials</strong> dans la portion forte, puis <strong>rest-pause</strong> si besoin (courte pause + quelques reps supplémentaires). Ces techniques densifient la série sans augmenter le volume total.</p>
+    </div>
+    <div class="p-card" style="animation-delay:.12s">
+      <div class="p-card-title">Progression</div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Fourchette cible : <strong>6 à 10 reps</strong> pour la plupart des mouvements.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Partir avec une charge permettant <strong>au moins 6 reps propres</strong>.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Garder la charge, <strong>augmenter les reps</strong> d'une session à l'autre.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Quand <strong>10 reps propres</strong> sont atteintes → augmenter la charge à la session suivante.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Si pas de progrès sur plusieurs sessions : vérifier <strong>intake, poids de corps, sommeil, fatigue</strong>.</span></div>
+    </div>
+    <div class="p-card" style="animation-delay:.16s">
+      <div class="p-card-title">Choix des exercices</div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Pour chaque groupe musculaire : <strong>1 exercice en étirement</strong> + <strong>1 exercice en contraction</strong>.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span>Si un muscle est en retard : commencer par l'<strong>exercice en contraction</strong> pour améliorer le recrutement.</span></div>
+      <div class="p-rule"><div class="p-rule-dot"></div><span><strong>Machines préférées</strong> — résistance constante, sécurité à la failure, pas de stabilisation parasite.</span></div>
+    </div>`
+  },
+  {
+    id:"fde",label:"📋 Full Day",
+    content:`
+    <div class="p-card" style="animation-delay:.02s;margin-bottom:10px;">
+      <div class="p-card-title">Exemple HCLF · ~750g glucides · ~100g prot · ~25g gras</div>
+      <p>Structure adaptée à 73kg — l'essentiel des calories vient des liquides, des féculents faciles et des blocs entre les repas, pas des repas énormes.</p>
+    </div>
+    <div class="fde-block" style="animation-delay:.06s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Réveil</div><div class="fde-name">Café + OJ contrôlé</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">Café avec 300–400ml lait écrémé + 20–30g sucre ou miel.<br>Workout day : 1 verre de jus d'orange (~250ml) à côté.<br>Rest day : jusqu'à 500ml jus d'orange max sur toute la journée.<br><br><em>Démarre l'intake tôt sans créer de satiété. Pas de gros repas solide.</em></div>
+    </div>
+    <div class="fde-block" style="animation-delay:.09s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Repas 1</div><div class="fde-name">Riz ou patates + protéine maigre</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">111g riz blanc (poids cru) ou 550–650g pommes de terre + 70–100g protéine maigre + sel.<br><br>Pommes de terre bouillies ou air fryer en frites avec 1/2 c. à soupe d'huile de coco si tu veux varier.<br><em>Si lourd : réduire la protéine, pas les glucides.</em></div>
+    </div>
+    <div class="fde-block" style="animation-delay:.12s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Entre repas</div><div class="fde-name">Lait chocolaté + dattes</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">500–700ml lait chocolaté écrémé (sans lactose si besoin) — boire rapidement.<br>80–120g dattes ou raisins secs.<br><br><strong>Ce bloc seul ajoute +150g de glucides</strong> sans affecter le prochain repas.<br><em>5–10g gingembre confit si la nourriture commence à stagner.</em></div>
+    </div>
+    <div class="fde-block" style="animation-delay:.15s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Repas 2</div><div class="fde-name">Riz ou pâtes + protéine</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">Même structure que Repas 1 — riz blanc, pommes de terre ou pâtes blanches, protéine maigre, peu de gras.</div>
+    </div>
+    <div class="fde-block" style="animation-delay:.18s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Pré-workout</div><div class="fde-name">Léger · pas de gras</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">250–300ml jus de pomme ou petit cola + rice cakes/céréales low-fat si besoin.<br>Aucun gras, pas de gros repas. L'objectif est d'arriver avec de l'énergie, pas rassasié, sans ajouter d'OJ hors intra.</div>
+    </div>
+    <div class="fde-block" style="animation-delay:.21s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Intra</div><div class="fde-name">1L jus d'orange + sel</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">1L jus d'orange + pincée de sel pendant la séance.<br><br><em>C'est le gros apport d'OJ du workout day : garde l'output stable et réduit le stress cortisol pendant la séance.</em></div>
+    </div>
+    <div class="fde-block" style="animation-delay:.24s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Post-workout</div><div class="fde-name">Liquide · zéro gras</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">400–600ml lait chocolaté écrémé, ou lait écrémé + sucre/miel.<br>Protéine maigre seulement si besoin.<br><br><strong>Aucun gras, pas d'OJ en plus</strong> — le prochain repas ne doit pas être retardé.</div>
+    </div>
+    <div class="fde-block" style="animation-delay:.27s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Dîner</div><div class="fde-name">Repas chaud complet</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">Riz, pommes de terre, pain au levain ou pâtes + protéine maigre (poisson blanc, thon, blanc d'œuf, fruits de mer, steak haché 5% MG parfois) + petit cola possible.<br><br>Ajouter la salade daily : 1–2 carottes râpées en strips + 1 c. à café huile de coco + 1/2 c. à café vinaigre blanc + sel de Guérande. Elle sert de “balai” intestinal façon Peat-friendly.<br><br>Garder le gras bas pour que le repas du soir ne bloque pas la fin de journée.</div>
+    </div>
+    <div class="fde-block" style="animation-delay:.30s" onclick="this.classList.toggle('open')">
+      <div class="fde-header"><div><div class="fde-time">Fin de soirée</div><div class="fde-name">Sorbet ou skyr + miel</div></div><span class="chev">▼</span></div>
+      <div class="fde-body">Sorbet si dispo. Sinon skyr ou yaourt grec 0% + beaucoup de miel. Ajouter cola ou lait écrémé si besoin de glucides.<br><br><strong>Pourquoi ?</strong> Glucides faciles, quasi zéro gras → ne ralentit pas la digestion, fait monter les calories sans inconfort.<br><br><em>Objectif : atteindre 650–850g de glucides sur la journée sans ajouter d'OJ le soir.</em></div>
+    </div>`
+  },
+  {
+    id:"suivi",label:"📊 Suivi",
+    content:`
+    <div class="p-card" style="animation-delay:.04s;margin-bottom:10px;">
+      <div class="p-card-title">Évaluation hebdomadaire — 1 seul changement à la fois</div>
+      <p>Se peser chaque matin dans les mêmes conditions. Utiliser la <strong>moyenne de la semaine</strong>, pas une mesure isolée.</p>
+    </div>
+    <div class="suivi-step" style="animation-delay:.08s">
+      <div class="suivi-num">1</div>
+      <div class="suivi-title">Poids de corps</div>
+      <div class="suivi-body">La moyenne hebdomadaire n'a pas augmenté → passer à l'étape 2.<br>Elle a augmenté → vérifier les performances à l'entraînement.</div>
+    </div>
+    <div class="suivi-step" style="animation-delay:.12s">
+      <div class="suivi-num">2</div>
+      <div class="suivi-title">Intake</div>
+      <div class="suivi-body"><strong>Repas non terminés →</strong> Ne pas augmenter les calories. Réduire le volume, réduire le gras par repas, ajouter des calories liquides, ajuster le timing.<br><strong>Repas terminés →</strong> Augmenter de +200 à +300 kcal/jour sans changer la structure.</div>
+    </div>
+    <div class="suivi-step" style="animation-delay:.16s">
+      <div class="suivi-num">3</div>
+      <div class="suivi-title">Performance</div>
+      <div class="suivi-body"><strong>En hausse →</strong> Rien à changer.<br><strong>Stable ou en baisse →</strong> Garder les calories, baisser légèrement la charge, ou s'arrêter 1–2 reps avant la failure temporairement.</div>
+    </div>
+    <div class="suivi-step" style="animation-delay:.20s">
+      <div class="suivi-num">4</div>
+      <div class="suivi-title">Digestion</div>
+      <div class="suivi-body">Si la digestion limite l'intake : réduire le gras par repas, simplifier les repas, contrôler fibres et volume, séparer les fluides des repas, utiliser des glucides liquides.<br><strong>Ne pas augmenter les calories tant que les repas ne sont pas répétables.</strong></div>
+    </div>
+    <div class="suivi-step" style="animation-delay:.24s">
+      <div class="suivi-num">5</div>
+      <div class="suivi-title">Règles absolues</div>
+      <div class="suivi-body">— Ne pas changer calories ET entraînement la même semaine.<br>— Ne pas réagir à une seule journée.<br>— Ne pas réduire la nourriture quand la fatigue augmente.<br>— Ne pas ajouter du volume comme premier ajustement.<br>— <strong>Un seul changement par semaine.</strong></div>
+    </div>`
+  }
+];
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let day='training',openM=new Set(),openW=new Set(),currentP='essentiels';
+
+// ─── RENDER MEALS ─────────────────────────────────────────────────────────────
+function renderMeals(){
+  const list=meals[day];
+  const tot=list.reduce((a,m)=>({c:a.c+m.m.c,p:a.p+m.m.p,f:a.f+m.m.f,k:a.k+m.m.k}),{c:0,p:0,f:0,k:0});
+  const target=day==='training'?3800:3200;
+  const pct=Math.min(100,Math.round(tot.k/target*100));
+  document.getElementById('meals-list').innerHTML=list.map((meal,i)=>{
+    const op=openM.has(day+i);
+    return `<div class="card${op?' open':''}" onclick="tM(${i})" style="animation-delay:${i*.04}s">
+      <div class="card-header">
+        <div class="card-left"><span class="card-emoji">${meal.emoji}</span><span class="card-name">${meal.title}</span></div>
+        <div class="card-right"><span class="card-kcal">${meal.m.k} kcal</span><span class="chev">▼</span></div>
+      </div>
+      <div class="card-body">
+        <ul class="item-list">${meal.items.map(x=>`<li>${x}</li>`).join('')}</ul>
+        <div class="macros"><span class="badge bc">Carbs ${meal.m.c}g</span><span class="badge bp">Prot ${meal.m.p}g</span><span class="badge bf">Fat ${meal.m.f}g</span></div>
+        ${meal.note?`<div class="note">${meal.note}</div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('total-block').innerHTML=`
+    <div class="total">
+      <div class="total-lbl">Total journalier</div>
+      <div class="total-num">${tot.k.toLocaleString('fr-FR')} <span>kcal</span></div>
+      <div class="prog"><div class="prog-fill" style="width:${pct}%"></div></div>
+      <div class="macros"><span class="badge bc">Carbs ${tot.c}g</span><span class="badge bp">Prot ${tot.p}g</span><span class="badge bf">Fat ${tot.f}g</span></div>
+    </div>`;
+}
+
+// ─── RENDER WORKOUTS ──────────────────────────────────────────────────────────
+function renderWorkouts(){
+  const dm={t:'dt',m:'dm',r:'dr',rf:'drf'};
+  const bm={t:'tbt',m:'tbm',r:'tbr',rf:'tbrf'};
+  document.getElementById('workouts-list').innerHTML=workouts.map((w,i)=>{
+    const op=openW.has(i);
+    let body='';
+    if(w.exos){
+      body=`<div class="split-lbl">${w.split}</div>
+        <div class="failure-note">💀 ${w.failureNote}</div>
+        <ul class="ex-list" style="margin-top:10px">${w.exos.map(e=>`<li>
+          <div class="ex-row"><span class="ex-name">${e.name}</span><span class="ex-sets">${e.sets}</span></div>
+          ${e.tip?`<div class="ex-tip">${e.tip}</div>`:''}
+        </li>`).join('')}</ul>`;
+      if(w.pectus) body+=`<div class="pectus" style="margin-top:10px"><strong>⚠ Pectus excavatum</strong> — ${w.pectusNote}</div>`;
+    } else {
+      body=`<p class="rest-txt">${w.rest}</p>`;
+    }
+    body+=`<div class="nut-tag">🥗 ${w.nut}</div>`;
+    return `<div class="card${op?' open':''}" onclick="tW(${i})" style="animation-delay:${i*.04}s">
+      <div class="card-header">
+        <div class="card-left"><div class="day-dot ${dm[w.type]}"></div><span class="day-name">${w.day}</span></div>
+        <div class="card-right"><span class="tbadge ${bm[w.type]}">${w.label}</span><span class="chev">▼</span></div>
+      </div>
+      <div class="card-body">${body}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── RENDER PRINCIPES ─────────────────────────────────────────────────────────
+function renderPrincipes(){
+  document.getElementById('pmenu').innerHTML=principes.map(p=>`
+    <button class="pmenu-btn${p.id===currentP?' active':''}" onclick="switchP('${p.id}')">${p.label}</button>
+  `).join('');
+  const sec=principes.find(p=>p.id===currentP);
+  document.getElementById('principes-content').innerHTML=sec?sec.content:'';
+}
+
+function switchP(id){currentP=id;renderPrincipes();}
+
+// ─── INTERACTIONS ─────────────────────────────────────────────────────────────
+function tM(i){const k=day+i;openM.has(k)?openM.delete(k):openM.add(k);renderMeals();}
+function tW(i){openW.has(i)?openW.delete(i):openW.add(i);renderWorkouts();}
+function switchDay(d){day=d;document.getElementById('btn-training').classList.toggle('active',d==='training');document.getElementById('btn-rest').classList.toggle('active',d==='rest');renderMeals();}
+function switchView(v,btn){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  btn.classList.add('active');
+  if(v==='principes') renderPrincipes();
+}
+function toggleTheme(){const h=document.documentElement;const dark=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',dark?'light':'dark');document.querySelector('.theme-btn').textContent=dark?'🌙':'☀️';}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+renderMeals();
+renderWorkouts();
+</script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
